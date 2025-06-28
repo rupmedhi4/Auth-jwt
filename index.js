@@ -9,9 +9,15 @@ import userRoute from "./routes/user.route.js";
 const port = 5000;
 const app = express();
 
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://auth-jwt-frontend.vercel.app'
+  
+];
+
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin || origin.endsWith('.vercel.app') || origin === 'http://localhost:5173') {
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
@@ -19,7 +25,6 @@ app.use(cors({
   },
   credentials: true,
 }));
-
 
 
 app.use(bodyParser.urlencoded({ extended: true }));

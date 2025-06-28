@@ -7,10 +7,11 @@ const signupOrLogin = async (req, res) => {
   try {
     const { name } = req.body;
 
-    createTokenAndSaveCookie("123",res)
+    const token = createTokenAndSaveCookie("123", res)
     return res.status(201).json({
       message: "User created successfully",
-     name
+      name,
+      token
     });
 
   } catch (error) {
