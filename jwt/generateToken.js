@@ -11,10 +11,10 @@ console.log(isProduction);
   );
 
   res.cookie('jwt', token, {
-    httpOnly: false,                             
-    secure: isProduction,                       
-    sameSite: isProduction ? 'None' : 'Lax',   
-    maxAge: 14 * 24 * 60 * 60 * 1000          
+   httpOnly: false,              
+    secure: true,                 
+    sameSite: "None",           
+    maxAge: 14 * 24 * 60 * 60 * 1000      
   });
 
   console.log('JWT created and cookie set');
